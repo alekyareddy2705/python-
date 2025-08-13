@@ -1,0 +1,73 @@
+# product of array
+nums=[1,2,3,4]
+n=len(nums)
+result=[]
+for i in range(0,n):
+    product=1
+    for j in range(0,n):
+        if(i!=j):
+            product=product*nums[j]
+    result.append(product)
+print(result)
+
+output:[24, 12, 8, 6]
+
+
+# Product of zeroes
+from typing import List
+class Solution:
+    def  productExcept(self,nums):
+        n=len(nums)
+        no_of_zeroes=0
+        prod=1
+        for i in nums:
+            if(i==0):
+                no_of_zeroes+=1
+            else:
+                prod*=i
+        ans=[]
+        for i in nums:
+            if(no_of_zeroes>1):
+                ans.append(0)
+            else:
+                if(no_of_zeroes==1):
+                    if(i==0):
+                        ans.append(prod)
+                    else:
+                        ans.append(0)
+                else:
+                    ans.append(prod//i)
+        return ans
+ob=Solution()
+nums=[0,1,2,3]
+print(ob.productExcept(nums))
+
+output:[6, 0, 0, 0] 
+
+
+# Product Except
+from typing import List
+class Solution:
+    def productExcept(self,nums):
+        n=len(nums)
+        prod=1
+        left=[0]*n
+        for i in range(0,n):
+            prod=prod*nums[i]
+            left[i]=prod
+        prod=1
+        right=[0]*n
+        for i in range(n-1,-1,-1):
+            prod=prod*nums[i]
+            right[i]=prod
+        ans=[0]*n
+        ans[0]=right[1]
+        for i in range(1,n-1):
+            ans[i]=left[i-1]*right[i-1]
+        ans[n-1]=left[n-2]
+        return ans
+ob=Solution()
+nums=[1,2,3,4]
+print(ob.productExcept(nums))
+output:[24, 24, 48, 6]  
+
