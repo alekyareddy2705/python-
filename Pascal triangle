@@ -1,0 +1,56 @@
+# finding rows and columns of pascal traingle
+row=int(input())
+col=int(input())
+n=row-1
+r=col-1
+ans=1
+for i in range(r):
+    ans=ans*(n-i)
+    ans=ans//(i+1)
+print(ans)
+    
+output:6
+4
+10  
+
+
+# print the elements in a row
+def ncr(n,r):
+    ans=1
+    for i in range(r):
+        ans=ans*(n-i)
+        ans=ans//(i+1)
+    return ans
+row=int(input())
+result=[]
+for col in range(1,row+1):
+    result.append(ncr(row-1,col-1))
+print(result)
+output:
+5
+[1, 4, 6, 4, 1
+
+
+# generate rows
+def generateRow(row):
+    ans=1
+    result=[ans]
+    for col in range(1,row):
+        ans=ans*(row-col)
+        ans=ans//(col)
+        result.append(ans)
+    return result
+finalResult=[]
+row=int(input("enter the number of rows:"))
+for row in range(1,row+1):
+    finalResult.append(generateRow(row))
+for lst in finalResult:
+    print(*lst)
+
+output:
+enter the number of rows:5
+1
+1 1
+1 2 1
+1 3 3 1
+1 4 6 4 1
